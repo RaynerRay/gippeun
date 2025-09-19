@@ -84,7 +84,7 @@ const GetStarted = () => {
                 <div className="text-center mb-6">
                   <div className="text-4xl mb-4">💰</div>
                   <h3 className="text-2xl font-light text-orange-800 mb-2">Investment</h3>
-                  <div className="text-4xl font-light text-orange-600 mb-2">£25</div>
+                  <div className="text-4xl font-light text-orange-600 mb-2">£50</div>
                   <p className="text-orange-700">per hour</p>
                 </div>
                 
@@ -140,130 +140,146 @@ const GetStarted = () => {
 
           {/* Booking Form Tab */}
           {activeTab === 'booking' && (
-            <div className="max-w-4xl mx-auto animate-fade-in">
-              <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl p-8 border border-orange-200 shadow-lg">
-                
-                {/* Form Header */}
-                <div className="text-center mb-8">
-                  <div className="text-4xl mb-4">📝</div>
-                  <h3 className="text-2xl font-light text-orange-800 mb-2">Book Your Session</h3>
-                  <p className="text-orange-700">Please share the details below to begin your healing journey</p>
-                </div>
+  <div className="max-w-4xl mx-auto animate-fade-in">
+    <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl p-8 border border-orange-200 shadow-lg">
+      
+      {/* Form Header */}
+      <div className="text-center mb-8">
+        <div className="text-4xl mb-4">📝</div>
+        <h3 className="text-2xl font-light text-orange-800 mb-2">Book Your Session</h3>
+        <p className="text-orange-700">Please share the details below to begin your healing journey</p>
+      </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  
-                  {/* Left Column */}
-                  <div className="space-y-6">
-                    
-                    {/* Name */}
-                    <div>
-                      <label className="block text-orange-800 font-light mb-2">Your Name</label>
-                      <input
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300"
-                        placeholder="Enter your name"
-                        required
-                      />
-                    </div>
+      <form 
+        action="https://formsubmit.co/gippeun.tiffin@yahoo.com" 
+        method="POST" 
+        className="grid md:grid-cols-2 gap-6"
+      >
+        {/* Hidden fields for FormSubmit */}
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you" />
 
-                    {/* Preferred Time */}
-                    <div>
-                      <label className="block text-orange-800 font-light mb-2">Preferred Day + Time</label>
-                      <select
-                        value={formData.preferredTime}
-                        onChange={(e) => setFormData({...formData, preferredTime: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300"
-                        required
-                      >
-                        <option value="">Select a time slot</option>
-                        {timeSlots.map((slot) => 
-                          slot.times.map((time) => (
-                            <option key={`${slot.day}-${time}`} value={`${slot.day} ${time}`}>
-                              {slot.day} - {time}
-                            </option>
-                          ))
-                        )}
-                      </select>
-                    </div>
+        {/* Left Column */}
+        <div className="space-y-6">
+          {/* Name */}
+          <div>
+            <label className="block text-orange-800 font-light mb-2">Your Name</label>
+            <input
+              type="text"
+              name="name"
+              className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          {/* Contact */}
+          <div>
+            <label className="block text-orange-800 font-light mb-2">Your Email / Phone Number</label>
+            <input
+              type="text"
+              name="emailornumber"
+              className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300"
+              placeholder="Enter your email address or phone number"
+              required
+            />
+          </div>
 
-                    {/* Focus Area */}
-                    <div>
-                      <label className="block text-orange-800 font-light mb-3">What would you like to focus on?</label>
-                      <div className="grid grid-cols-1 gap-2">
-                        {focusAreas.map((area, index) => (
-                          <button
-                            key={index}
-                            type="button"
-                            onClick={() => {
-                              setSelectedFocus(area.text);
-                              setFormData({...formData, focusArea: area.text});
-                            }}
-                            className={`flex items-center space-x-3 p-3 rounded-xl border transition-all duration-300 text-left ${
-                              selectedFocus === area.text
-                                ? 'border-orange-400 bg-orange-50'
-                                : 'border-orange-200 bg-white bg-opacity-60 hover:bg-orange-50'
-                            }`}
-                          >
-                            <span className="text-xl">{area.emoji}</span>
-                            <span className="text-orange-700">{area.text}</span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+          {/* Preferred Time */}
+          <div>
+            <label className="block text-orange-800 font-light mb-2">Preferred Day + Time</label>
+            <select
+              name="preferredTime"
+              className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300"
+              required
+            >
+              <option value="">Select a time slot</option>
+              {timeSlots.map((slot) => 
+                slot.times.map((time) => (
+                  <option key={`${slot.day}-${time}`} value={`${slot.day} ${time}`}>
+                    {slot.day} - {time}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
 
-                  {/* Right Column */}
-                  <div className="space-y-6">
-                    
-                    {/* Goals */}
-                    <div>
-                      <label className="block text-orange-800 font-light mb-2">What do you hope to achieve?</label>
-                      <textarea
-                        value={formData.goals}
-                        onChange={(e) => setFormData({...formData, goals: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300 h-32 resize-none"
-                        placeholder="Share your goals and what you'd like to work on during our session(s)..."
-                        required
-                      />
-                    </div>
+          {/* Focus Area */}
+         {/* Focus Area */}
+<div>
+  <label className="block text-orange-800 font-light mb-3">
+    What would you like to focus on?
+  </label>
+  <div className="grid grid-cols-1 gap-2">
+    {focusAreas.map((area, index) => (
+      <label
+        key={index}
+        className="relative flex items-center space-x-3 p-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 hover:bg-orange-50 cursor-pointer transition-all duration-300 peer-checked:border-orange-400 peer-checked:bg-orange-50"
+      >
+        {/* Hidden Radio */}
+        <input
+          type="radio"
+          name="focusArea"
+          value={area.text}
+          className="peer hidden"
+          required
+        />
+        
+        {/* Content that stays visible */}
+        <span className="text-xl">{area.emoji}</span>
+        <span className="text-orange-700">{area.text}</span>
+      </label>
+    ))}
+  </div>
+</div>
 
-                    {/* Additional Info */}
-                    <div className="bg-orange-50 rounded-2xl p-6 border border-orange-100">
-                      <h4 className="font-medium text-orange-800 mb-3">What happens next?</h4>
-                      <div className="space-y-2 text-sm text-orange-700">
-                        <div className="flex items-start space-x-2">
-                          <span>1.</span>
-                          <span>I'll review your request and confirm your time slot</span>
-                        </div>
-                        <div className="flex items-start space-x-2">
-                          <span>2.</span>
-                          <span>You'll receive session details and payment information</span>
-                        </div>
-                        <div className="flex items-start space-x-2">
-                          <span>3.</span>
-                          <span>We'll begin your healing journey together</span>
-                        </div>
-                      </div>
-                    </div>
+        </div>
 
-                    {/* Submit Button */}
-                    <button
-                      onClick={() => {
-                        // Handle booking request
-                        console.log('Booking request:', formData);
-                        alert('Thank you! Your booking request has been sent. Ray will confirm your session details soon.');
-                      }}
-                      className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-light tracking-wide rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-lg"
-                    >
-                      Send Booking Request
-                    </button>
-                  </div>
-                </div>
-                              </div>
+        {/* Right Column */}
+        <div className="space-y-6">
+          {/* Goals */}
+          <div>
+            <label className="block text-orange-800 font-light mb-2">What do you hope to achieve?</label>
+            <textarea
+              name="goals"
+              className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-300 h-32 resize-none"
+              placeholder="Share your goals and what you'd like to work on during our session(s)..."
+              required
+            />
+          </div>
+
+          {/* Additional Info */}
+          <div className="bg-orange-50 rounded-2xl p-6 border border-orange-100">
+            <h4 className="font-medium text-orange-800 mb-3">What happens next?</h4>
+            <div className="space-y-2 text-sm text-orange-700">
+              <div className="flex items-start space-x-2">
+                <span>1.</span>
+                <span>I'll review your request and confirm your time slot</span>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span>2.</span>
+                <span>You'll receive session details and payment information</span>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span>3.</span>
+                <span>We'll begin your healing journey together</span>
+              </div>
             </div>
-          )}
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-light tracking-wide rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-lg"
+          >
+            Send Booking Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
+
         </div>
 
         {/* Footer Message */}
