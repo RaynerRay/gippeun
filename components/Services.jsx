@@ -270,7 +270,7 @@ const Services = () => {
           <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl p-8 max-w-2xl mx-auto border border-orange-200 shadow-xl">
             <h3 className="text-3xl font-light text-orange-800 mb-4">Ready to Begin Your Journey?</h3>
             <p className="text-orange-700 mb-8 leading-relaxed text-lg">
-              Whether through professional support or soul-centered healing, gippeun is here to walk gently with you on your path to wholeness.
+              Whether through professional support or soul-centered healing, Gippeun is here to walk gently with you on your path to wholeness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-10 py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-light tracking-wide rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
