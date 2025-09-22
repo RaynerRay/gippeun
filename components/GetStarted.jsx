@@ -290,7 +290,7 @@ const GetStarted = () => {
             </p>
             <p className="text-orange-600 italic">
               With softness and grace,<br />
-              <strong>T | The House of Gippeun</strong><br />
+              <strong>The House of Gippeun</strong><br />
               Healing Coach & Emotional Guide
             </p>
           </div>

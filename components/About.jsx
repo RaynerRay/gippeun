@@ -30,7 +30,7 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-light text-orange-800 mb-6 tracking-wide">
-            About Tafadzwa
+            About Gippeun
           </h2>
           <p className="text-xl text-orange-700 max-w-3xl mx-auto leading-relaxed">
             Experienced Social Worker | Healing Coach & Emotional Mentor

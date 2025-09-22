@@ -51,10 +51,10 @@ const Navbar = () => {
                Get Started
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="/contact" className="text-orange-700 font-light tracking-wide hover:text-orange-600 transition-colors duration-300 relative group">
+              {/* <a href="/contact" className="text-orange-700 font-light tracking-wide hover:text-orange-600 transition-colors duration-300 relative group">
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </a> */}
             </div>
 
             {/* CTA Button */}
@@ -92,9 +92,9 @@ const Navbar = () => {
               <a href="/get-started" className="block text-orange-700 font-light tracking-wide hover:text-orange-600 transition-colors duration-300 py-2">
                 Get Started
               </a>
-              <a href="/contact" className="block text-orange-700 font-light tracking-wide hover:text-orange-600 transition-colors duration-300 py-2">
+              {/* <a href="/contact" className="block text-orange-700 font-light tracking-wide hover:text-orange-600 transition-colors duration-300 py-2">
                 Contact
-              </a>
+              </a> */}
               <div className="pt-4 border-t border-orange-200">
                 <a href='/get-started'>
                 <button className="w-full px-6 py-3 bg-white bg-opacity-40 backdrop-blur-sm border border-orange-300 text-orange-800 font-light tracking-wide rounded-full hover:bg-opacity-60 transform hover:scale-105 transition-all duration-300 shadow-md">

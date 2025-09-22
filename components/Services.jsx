@@ -80,7 +80,7 @@ const Services = () => {
             Your Healing Journey
           </h2>
           <p className="text-xl text-orange-700 max-w-3xl mx-auto leading-relaxed">
-            Walk gently with Taffie through pain, and emerge emotionally grounded, whole, and free
+            Walk gently with Tafie through pain, and emerge emotionally grounded, whole, and free
           </p>
         </div>
 
