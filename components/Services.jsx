@@ -11,39 +11,124 @@ const Services = () => {
       icon: "👥",
       title: "Professional Social Work",
       subtitle: "Qualified Adult Social Worker",
-      description: "Person-centred, trauma-informed practice supporting you through emotional and life challenges with professional expertise and compassionate care.",
-      features: ["Trauma-informed approach", "Person-centred practice", "Emotional support", "Life transitions"],
+      description:
+        "Person-centred, trauma-informed practice supporting you through emotional and life challenges with professional expertise and compassionate care.",
+      features: [
+        "Trauma-informed approach",
+        "Person-centred practice",
+        "Emotional support",
+        "Life transitions",
+      ],
       color: "from-orange-400 to-orange-500",
-      bgColor: "bg-orange-50"
+      bgColor: "bg-orange-50",
     },
     {
       icon: "🌸",
       title: "1:1 Healing Sessions",
       subtitle: "Healing Coach & Mentor",
-      description: "Personalized sessions guiding you from heartbreak, anxiety, or low self-worth into softness, clarity, and personal power.",
-      features: ["Emotional healing", "Confidence building", "Self-trust development", "Personal empowerment"],
+      description:
+        "Personalized sessions guiding you from heartbreak, anxiety, or low self-worth into softness, clarity, and personal power.",
+      features: [
+        "Emotional healing",
+        "Confidence building",
+        "Self-trust development",
+        "Personal empowerment",
+      ],
       color: "from-pink-400 to-rose-500",
-      bgColor: "bg-pink-50"
+      bgColor: "bg-pink-50",
     },
     {
       icon: "✨",
       title: "Confidence Building",
       subtitle: "Rediscover Your Inner Strength",
-      description: "Transform limiting beliefs and step into your authentic power through gentle, supportive guidance tailored to your unique journey.",
-      features: ["Self-worth restoration", "Inner strength activation", "Authentic self-expression", "Personal boundaries"],
+      description:
+        "Transform limiting beliefs and step into your authentic power through gentle, supportive guidance tailored to your unique journey.",
+      features: [
+        "Self-worth restoration",
+        "Inner strength activation",
+        "Authentic self-expression",
+        "Personal boundaries",
+      ],
       color: "from-yellow-400 to-amber-500",
-      bgColor: "bg-yellow-50"
+      bgColor: "bg-yellow-50",
     },
     {
       icon: "🌿",
       title: "Emotional Grounding",
       subtitle: "Find Your Center",
-      description: "Learn to navigate emotions with grace, develop resilience, and create lasting inner stability through proven healing techniques.",
-      features: ["Emotional regulation", "Mindfulness practices", "Stress management", "Inner peace cultivation"],
+      description:
+        "Learn to navigate emotions with grace, develop resilience, and create lasting inner stability through proven healing techniques.",
+      features: [
+        "Emotional regulation",
+        "Mindfulness practices",
+        "Stress management",
+        "Inner peace cultivation",
+      ],
       color: "from-green-400 to-emerald-500",
-      bgColor: "bg-green-50"
-    }
+      bgColor: "bg-green-50",
+    },
+    {
+      icon: "🌀",
+      title: "The 9 Phases of Transformation",
+      subtitle: "Your Journey Through Healing",
+      description:
+        "A guided emotional transformation model that moves you from deep pain toward authentic peace and softness. Each phase helps you embrace and evolve through your emotional landscape.",
+      features: [
+        "Pain → Grieving → Acceptance",
+        "Accountability → Release → Peace",
+        "Confidence → Growth → Softness",
+        "Support through each emotional phase",
+      ],
+      color: "from-indigo-400 to-purple-500",
+      bgColor: "bg-indigo-50",
+    },
+    {
+      icon: "🏡",
+      title: "Membership: The House of Gippeun Retreats",
+      subtitle: "Private Healing Retreat Access",
+      description:
+        "Join an intimate community for transformative in-person retreats designed for deep healing, reflection, and connection. Members receive exclusive invitations and early access.",
+      features: [
+        "Private invitations to retreats",
+        "Healing workshops & circles",
+        "Nature-centered reflection",
+        "Exclusive community membership",
+      ],
+      color: "from-teal-400 to-cyan-500",
+      bgColor: "bg-teal-50",
+    },
+    {
+      icon: "🤲",
+      title: "The House of Gippeun Charity Work",
+      subtitle: "Giving Back Through Compassion",
+      description:
+        "Extending healing into the community through outreach programs, support for vulnerable individuals, and collaborative service initiatives.",
+      features: [
+        "Community healing initiatives",
+        "Support for women & families",
+        "Collaborations with local causes",
+        "Donation & volunteer opportunities",
+      ],
+      color: "from-red-400 to-rose-500",
+      bgColor: "bg-red-50",
+    },
+    {
+      icon: "🧠",
+      title: "Men’s Listening & Advice Sessions",
+      subtitle: "For Men Seeking Understanding",
+      description:
+        "A safe, non-judgmental space where men can talk, be heard, and receive guidance — not therapy, but grounded listening and reflective advice.",
+      features: [
+        "Confidential one-on-one conversations",
+        "Gentle guidance, not counseling",
+        "Empathetic male-focused space",
+        "Restoring emotional balance",
+      ],
+      color: "from-blue-400 to-indigo-500",
+      bgColor: "bg-blue-50",
+    },
   ];
+
 
   useEffect(() => {
     setIsInView(true);
