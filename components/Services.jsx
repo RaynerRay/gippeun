@@ -1,377 +1,212 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState } from "react";
 
 const Services = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [isInView, setIsInView] = useState(false);
-  const [completedSteps, setCompletedSteps] = useState([]);
-
-  const services = [
+  // Grouped service sections
+  const sections = [
     {
-      icon: "👥",
-      title: "Professional Social Work",
-      subtitle: "Qualified Adult Social Worker",
-      description:
-        "Person-centred, trauma-informed practice supporting you through emotional and life challenges with professional expertise and compassionate care.",
-      features: [
-        "Trauma-informed approach",
-        "Person-centred practice",
-        "Emotional support",
-        "Life transitions",
+      title: "Professional Healing & Support",
+      subtitle:
+        "Walk gently through pain, toward peace, clarity, and confidence.",
+      services: [
+        {
+          icon: "👥",
+          title: "Professional Social Work",
+          description:
+            "Person-centred, trauma-informed practice supporting you through emotional and life challenges with compassion and expertise.",
+          features: [
+            "Trauma-informed approach",
+            "Person-centred practice",
+            "Emotional support",
+            "Life transitions",
+          ],
+          color: "from-orange-400 to-orange-500",
+        },
+        {
+          icon: "🌸",
+          title: "1:1 Healing Sessions",
+          description:
+            "Personalized sessions guiding you from heartbreak, anxiety, or low self-worth into softness, clarity, and power.",
+          features: [
+            "Emotional healing",
+            "Confidence building",
+            "Self-trust development",
+            "Personal empowerment",
+          ],
+          color: "from-pink-400 to-rose-500",
+        },
+        {
+          icon: "✨",
+          title: "Confidence Building",
+          description:
+            "Transform limiting beliefs and step into your authentic power through gentle, supportive guidance tailored to your journey.",
+          features: [
+            "Self-worth restoration",
+            "Inner strength activation",
+            "Authentic self-expression",
+            "Personal boundaries",
+          ],
+          color: "from-yellow-400 to-amber-500",
+        },
+        {
+          icon: "🌿",
+          title: "Emotional Grounding",
+          description:
+            "Learn to navigate emotions with grace, develop resilience, and create lasting inner stability through proven techniques.",
+          features: [
+            "Emotional regulation",
+            "Mindfulness practices",
+            "Stress management",
+            "Inner peace cultivation",
+          ],
+          color: "from-green-400 to-emerald-500",
+        },
       ],
-      color: "from-orange-400 to-orange-500",
-      bgColor: "bg-orange-50",
     },
     {
-      icon: "🌸",
-      title: "1:1 Healing Sessions",
-      subtitle: "Healing Coach & Mentor",
-      description:
-        "Personalized sessions guiding you from heartbreak, anxiety, or low self-worth into softness, clarity, and personal power.",
-      features: [
-        "Emotional healing",
-        "Confidence building",
-        "Self-trust development",
-        "Personal empowerment",
+      title: "The Gippeun Journey",
+      subtitle: "A pathway through emotional transformation & sacred retreats.",
+      services: [
+        {
+          icon: "🌀",
+          title: "The 9 Phases of Transformation",
+          description:
+            "A guided model that moves you from deep pain toward authentic peace and softness. Each phase helps you embrace and evolve through your emotional landscape.",
+          features: [
+            "Pain → Grieving → Acceptance",
+            "Accountability → Release → Peace",
+            "Confidence → Growth → Softness",
+          ],
+          color: "from-indigo-400 to-purple-500",
+        },
+        {
+          icon: "🏡",
+          title: "Membership: The House of Gippeun Retreats",
+          description:
+            "Join an intimate community for transformative in-person retreats designed for deep healing, reflection, and connection.",
+          features: [
+            "Private retreat invitations",
+            "Healing workshops & circles",
+            "Nature-centered reflection",
+            "Exclusive membership access",
+          ],
+          color: "from-teal-400 to-cyan-500",
+        },
       ],
-      color: "from-pink-400 to-rose-500",
-      bgColor: "bg-pink-50",
     },
     {
-      icon: "✨",
-      title: "Confidence Building",
-      subtitle: "Rediscover Your Inner Strength",
-      description:
-        "Transform limiting beliefs and step into your authentic power through gentle, supportive guidance tailored to your unique journey.",
-      features: [
-        "Self-worth restoration",
-        "Inner strength activation",
-        "Authentic self-expression",
-        "Personal boundaries",
+      title: "Giving Back & Grounded Support",
+      subtitle: "Extending compassion into the community and to men seeking space.",
+      services: [
+        {
+          icon: "🤲",
+          title: "The House of Gippeun Charity Work",
+          description:
+            "Extending healing into the community through outreach programs, support for vulnerable individuals, and collaborative service initiatives.",
+          features: [
+            "Community healing projects",
+            "Support for women & families",
+            "Collaborations with local causes",
+            "Volunteer opportunities",
+          ],
+          color: "from-red-400 to-rose-500",
+        },
+        {
+          icon: "🧠",
+          title: "Men’s Listening & Advice Sessions",
+          description:
+            "A safe, non-judgmental space where men can talk, be heard, and receive grounded advice — not therapy, but compassionate listening.",
+          features: [
+            "Confidential one-on-one talks",
+            "Gentle guidance, not counseling",
+            "Male-focused emotional space",
+            "Restoring balance & clarity",
+          ],
+          color: "from-blue-400 to-indigo-500",
+        },
       ],
-      color: "from-yellow-400 to-amber-500",
-      bgColor: "bg-yellow-50",
-    },
-    {
-      icon: "🌿",
-      title: "Emotional Grounding",
-      subtitle: "Find Your Center",
-      description:
-        "Learn to navigate emotions with grace, develop resilience, and create lasting inner stability through proven healing techniques.",
-      features: [
-        "Emotional regulation",
-        "Mindfulness practices",
-        "Stress management",
-        "Inner peace cultivation",
-      ],
-      color: "from-green-400 to-emerald-500",
-      bgColor: "bg-green-50",
-    },
-    {
-      icon: "🌀",
-      title: "The 9 Phases of Transformation",
-      subtitle: "Your Journey Through Healing",
-      description:
-        "A guided emotional transformation model that moves you from deep pain toward authentic peace and softness. Each phase helps you embrace and evolve through your emotional landscape.",
-      features: [
-        "Pain → Grieving → Acceptance",
-        "Accountability → Release → Peace",
-        "Confidence → Growth → Softness",
-        "Support through each emotional phase",
-      ],
-      color: "from-indigo-400 to-purple-500",
-      bgColor: "bg-indigo-50",
-    },
-    {
-      icon: "🏡",
-      title: "Membership: The House of Gippeun Retreats",
-      subtitle: "Private Healing Retreat Access",
-      description:
-        "Join an intimate community for transformative in-person retreats designed for deep healing, reflection, and connection. Members receive exclusive invitations and early access.",
-      features: [
-        "Private invitations to retreats",
-        "Healing workshops & circles",
-        "Nature-centered reflection",
-        "Exclusive community membership",
-      ],
-      color: "from-teal-400 to-cyan-500",
-      bgColor: "bg-teal-50",
-    },
-    {
-      icon: "🤲",
-      title: "The House of Gippeun Charity Work",
-      subtitle: "Giving Back Through Compassion",
-      description:
-        "Extending healing into the community through outreach programs, support for vulnerable individuals, and collaborative service initiatives.",
-      features: [
-        "Community healing initiatives",
-        "Support for women & families",
-        "Collaborations with local causes",
-        "Donation & volunteer opportunities",
-      ],
-      color: "from-red-400 to-rose-500",
-      bgColor: "bg-red-50",
-    },
-    {
-      icon: "🧠",
-      title: "Men’s Listening & Advice Sessions",
-      subtitle: "For Men Seeking Understanding",
-      description:
-        "A safe, non-judgmental space where men can talk, be heard, and receive guidance — not therapy, but grounded listening and reflective advice.",
-      features: [
-        "Confidential one-on-one conversations",
-        "Gentle guidance, not counseling",
-        "Empathetic male-focused space",
-        "Restoring emotional balance",
-      ],
-      color: "from-blue-400 to-indigo-500",
-      bgColor: "bg-blue-50",
     },
   ];
 
-
-  useEffect(() => {
-    setIsInView(true);
-    const timer = setInterval(() => {
-      setActiveStep((prev) => {
-        const next = (prev + 1) % services.length;
-        if (!completedSteps.includes(prev)) {
-          setCompletedSteps(completed => [...completed, prev]);
-        }
-        return next;
-      });
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const handleStepClick = (index) => {
-    setActiveStep(index);
-    if (!completedSteps.includes(index)) {
-      setCompletedSteps(completed => [...completed, index]);
-    }
-  };
-
   return (
-    <div className="relative bg-gradient-to-b from-white to-orange-50 py-20 overflow-hidden">
-        {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-200 via-yellow-100 to-green-200"></div>
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="bg-gradient-to-b from-white to-orange-50 py-20">
+      <div className="max-w-7xl mx-auto px-6 space-y-24">
+        {sections.map((section, sIndex) => (
+          <div key={sIndex}>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-light text-orange-800 mb-4">
+                {section.title}
+              </h2>
+              <p className="text-lg text-orange-700 max-w-3xl mx-auto">
+                {section.subtitle}
+              </p>
+            </div>
 
-        
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-light text-orange-800 mb-6 tracking-wide">
-            Your Healing Journey
-          </h2>
-          <p className="text-xl text-orange-700 max-w-3xl mx-auto leading-relaxed">
-            Walk gently with Tafie through pain, and emerge emotionally grounded, whole, and free
-          </p>
-        </div>
-
-        {/* Interactive Walkthrough */}
-        <div className="relative">
-          
-          {/* Progress Indicator */}
-          <div className="flex justify-center mb-12">
-            <div className="flex items-center space-x-4">
-              {services.map((_, index) => (
-                <button
+            {/* Cards layout */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {section.services.map((service, index) => (
+                <div
                   key={index}
-                  onClick={() => handleStepClick(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-500 ${
-                    index === activeStep 
-                      ? 'bg-orange-500 scale-150 shadow-lg' 
-                      : completedSteps.includes(index)
-                      ? 'bg-orange-300 scale-110'
-                      : 'bg-orange-200 hover:bg-orange-300'
-                  }`}
+                  className={`bg-white border border-orange-100 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105`}
                 >
-                  {completedSteps.includes(index) && index !== activeStep && (
-                    <div className="w-full h-full rounded-full bg-green-500 flex items-center justify-center">
-                      <span className="text-white text-xs">✓</span>
-                    </div>
-                  )}
-                </button>
+                  <div
+                    className={`w-14 h-14 mb-4 rounded-2xl bg-gradient-to-r ${service.color} flex items-center justify-center text-3xl`}
+                  >
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl text-orange-800 font-light mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-orange-700 text-base mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 text-orange-600 text-sm">
+                    {service.features.map((f, i) => (
+                      <li key={i}>• {f}</li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
-
-          {/* Main Content Area */}
-          <div className="relative min-h-[600px]">
-            
-            {/* Animated Background */}
-            <div className={`absolute inset-0 rounded-3xl transition-all duration-1000 ${services[activeStep].bgColor} opacity-30`}></div>
-            
-            {/* Floating Particles */}
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${services[activeStep].color} opacity-40 animate-pulse`}
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${10 + (i % 3) * 30}%`,
-                  animationDelay: `${i * 0.5}s`
-                }}
-              ></div>
-            ))}
-
-            {/* Service Cards Container */}
-            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-              
-              {/* Left Side - Service Info */}
-              <div className="space-y-8 p-4">
-                <div className={`transform transition-all duration-700 ${isInView ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-                  
-                  {/* Step Indicator */}
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${services[activeStep].color} flex items-center justify-center text-3xl shadow-lg transform transition-all duration-500 hover:scale-110`}>
-                      {services[activeStep].icon}
-                    </div>
-                    <div>
-                      <div className="text-sm text-orange-600 font-medium tracking-wide">
-                        STEP {activeStep + 1} OF {services.length}
-                      </div>
-                      <div className="text-orange-800 font-light text-lg">
-                        {services[activeStep].subtitle}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-3xl md:text-4xl font-light text-orange-800 mb-4 leading-tight">
-                    {services[activeStep].title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-lg text-orange-700 leading-relaxed mb-6">
-                    {services[activeStep].description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="space-y-3">
-                    {services[activeStep].features.map((feature, index) => (
-                      <div 
-                        key={index}
-                        className="flex items-center space-x-3 transform transition-all duration-500"
-                        style={{ transitionDelay: `${index * 100}ms` }}
-                      >
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${services[activeStep].color}`}></div>
-                        <span className="text-orange-700 font-light">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Action Button */}
-                  <div className="pt-6">
-                    <button className={`px-8 py-3 bg-gradient-to-r ${services[activeStep].color} text-white font-light tracking-wide rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300`}>
-                      Learn More About This Service
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - Visual Journey */}
-              <div className="relative">
-                <div className={`transform transition-all duration-700 ${isInView ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-                  
-                  {/* Journey Visualization */}
-                  <div className="relative w-80 h-80 mx-auto">
-                    
-                    {/* Central Circle */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${services[activeStep].color} opacity-20 animate-pulse`}></div>
-                    <div className={`absolute inset-4 rounded-full bg-gradient-to-r ${services[activeStep].color} opacity-40`}></div>
-                    <div className={`absolute inset-8 rounded-full bg-gradient-to-r ${services[activeStep].color} opacity-60 flex items-center justify-center`}>
-                      <div className="text-6xl">{services[activeStep].icon}</div>
-                    </div>
-
-                    {/* Orbiting Elements */}
-                    {services.map((service, index) => (
-                      <div
-                        key={index}
-                        className={`absolute w-12 h-12 rounded-full bg-white shadow-lg border-2 flex items-center justify-center transition-all duration-500 cursor-pointer hover:scale-110 ${
-                          index === activeStep 
-                            ? `border-orange-500 scale-125` 
-                            : completedSteps.includes(index)
-                            ? 'border-green-400'
-                            : 'border-orange-200'
-                        }`}
-                        style={{
-                          transform: `rotate(${index * 90}deg) translateX(140px) rotate(-${index * 90}deg)`,
-                          transformOrigin: '50% 50%'
-                        }}
-                        onClick={() => handleStepClick(index)}
-                      >
-                        <span className="text-xl">{service.icon}</span>
-                        {completedSteps.includes(index) && index !== activeStep && (
-                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                            <span className="text-white text-xs">✓</span>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-
-                    {/* Connection Lines */}
-                    <svg className="absolute inset-0 w-full h-full">
-                      {services.map((_, index) => (
-                        <line
-                          key={index}
-                          x1="50%"
-                          y1="50%"
-                          x2={`${50 + 35 * Math.cos(index * Math.PI / 2)}%`}
-                          y2={`${50 + 35 * Math.sin(index * Math.PI / 2)}%`}
-                          stroke={index === activeStep ? '#f97316' : '#fed7aa'}
-                          strokeWidth={index === activeStep ? "3" : "1"}
-                          className="transition-all duration-500"
-                          opacity={index === activeStep ? "0.8" : "0.3"}
-                        />
-                      ))}
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="flex justify-center mt-12 space-x-4">
-            <button
-              onClick={() => handleStepClick(activeStep > 0 ? activeStep - 1 : services.length - 1)}
-              className="px-6 py-3 bg-white bg-opacity-60 backdrop-blur-sm border border-orange-300 text-orange-700 font-light tracking-wide rounded-full hover:bg-opacity-80 transform hover:scale-105 transition-all duration-300"
-            >
-              ← Previous
-            </button>
-            <button
-              onClick={() => handleStepClick((activeStep + 1) % services.length)}
-              className="px-6 py-3 bg-orange-400 text-white font-light tracking-wide rounded-full hover:bg-orange-500 transform hover:scale-105 transition-all duration-300"
-            >
-              Next →
-            </button>
-          </div>
-        </div>
+        ))}
 
         {/* Call to Action */}
         <div className="text-center mt-20">
           <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl p-8 max-w-2xl mx-auto border border-orange-200 shadow-xl">
-            <h3 className="text-3xl font-light text-orange-800 mb-4">Ready to Begin Your Journey?</h3>
+            <h3 className="text-3xl font-light text-orange-800 mb-4">
+              Ready to Begin Your Journey?
+            </h3>
             <p className="text-orange-700 mb-8 leading-relaxed text-lg">
-              Whether through professional support or soul-centered healing, Gippeun is here to walk gently with you on your path to wholeness.
+              Whether through professional support or soul-centered healing,
+              Gippeun is here to walk gently with you on your path to wholeness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-10 py-4 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-light tracking-wide rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
                 Book Your First Session
               </button>
-              <button className="px-10 py-4 border-2 border-orange-300 text-orange-700 font-light tracking-wide rounded-full hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 text-lg">
-                Connect on Instagram
-              </button>
+              <a
+                href="https://www.tiktok.com/@gippeun_ji"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-4 border-2 border-orange-300 text-orange-700 font-light tracking-wide rounded-full hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 text-lg flex items-center justify-center space-x-2"
+              >
+                <span>Connect on TikTok</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5"
+                >
+                  <path d="M12.75 2c.41 1.61 1.74 2.85 3.36 3.14V9a6.75 6.75 0 1 1-6.75-6.75h3.39z" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-);
-
+  );
 };
 
 export default Services;
